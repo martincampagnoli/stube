@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { LearningListComponent } from './components/learning-list/learning-list.component';
 import { MainComponent } from './components/main/main.component';
+import { MatCardModule } from '@angular/material/card';
+
+const mat = [
+  MatCardModule,
+];
 
 @NgModule({
   declarations: [
@@ -16,8 +21,10 @@ import { MainComponent } from './components/main/main.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ...mat
   ],
+  exports: [ ...mat ],
   providers: [],
   bootstrap: [AppComponent]
 })
