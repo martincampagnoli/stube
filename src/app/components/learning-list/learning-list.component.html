@@ -1,1 +1,12 @@
-<p>learning-list works!</p>
+<div *ngIf="learnings">
+    <list [data]="learnings"></list>
+</div>
+
+<mat-card class="feed-card slow-feed" *ngIf="!learnings">
+    <mat-card-content>
+        <p class="empty-feed">
+        No learnings to show
+        </p>
+    </mat-card-content>
+</mat-card>
+
