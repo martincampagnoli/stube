@@ -1,0 +1,36 @@
+<mat-paginator
+    [length]="data?.length" 
+    [pageSize]="pageSize"
+    (page)="getPaginatorData($event)" 
+    [pageSizeOptions]="pageSizeOptions">
+</mat-paginator>
+<mat-form-field>
+    <input matInput class="searchTerm" type="text" name="searchTerm" placeholder="Filter by name"
+        [(ngModel)]="searchTerm" (input)="search(searchTerm)" />
+</mat-form-field>
+<div *ngIf="data">
+    <div *ngFor="let item of ((data | slice: lowValue : highValue) | searchFilter: searchTerm)">
+        <mat-card class="feed-card slow-feed">
+            <mat-card-header>
+                <!--<div mat-card-avatar [ngStyle]="{'background-image': 'url(' + user?.avatar + ')'}" 
+                    class="feed-header-image"></div>-->
+                <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/empty.png)'}"
+                    class="feed-header-image"></div>
+                <mat-card-title class="title">{{ item?.name}}</mat-card-title>
+                <mat-card-subtitle>{{ item?.email}}</mat-card-subtitle>
+                <mat-card-subtitle>{{ item?.avatar}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions class="action-buttons">
+                <button mat-button color="primary"
+                    (click)="openModal('displayLearnings', '')">
+                    <mat-icon>school</mat-icon> 
+                    <span> Show Learnings</span>
+                </button>
+                <button mat-button (click)="openModal('removeUser', item)" color="warn">
+                    <mat-icon>clear</mat-icon> 
+                    <span>Remove from List</span>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
