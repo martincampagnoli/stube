@@ -4,7 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 @Injectable({
     providedIn: 'root'
 })
-export class UserService {
+export class DataService {
     constructor(private db: AngularFireDatabase) {
     }
 
@@ -13,8 +13,8 @@ export class UserService {
     }
 
     deleteUser(data: any): void {
-      const itemsRef = this.db.list('users');
-      const key = data.id - 1;
-      itemsRef.remove(key.toString());
+        const itemsRef = this.db.list('users');
+        const key = data.id - 1;
+        itemsRef.remove(key.toString());
     }
 }

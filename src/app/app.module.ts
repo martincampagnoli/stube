@@ -18,8 +18,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { ListComponent } from './components/learning-list/list/list.component';
 
 const mat = [
   MatCardModule,
@@ -28,7 +31,8 @@ const mat = [
   MatListModule,
   MatPaginatorModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatDialogModule
 ];
 
 const firebaseConfig = {
@@ -47,7 +51,8 @@ const firebaseConfig = {
     UserListComponent,
     LearningListComponent,
     MainComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +61,7 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     FormsModule,
+    NgxSmartModalModule.forRoot(),
     ...mat
   ],
   exports: [ ...mat ],
