@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
@@ -9,8 +9,9 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class ListComponent implements OnInit {
 
+  @ViewChild(MatPaginator, { static : false} ) paginator!: MatPaginator;
   @Input() data: any;
-  filteredData: Array<any> | undefined;
+  filteredData!: Array<any>;
 
   lowValue: number = 0;
   highValue: number = 20;
@@ -18,17 +19,17 @@ export class ListComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   searchTerm!: string;
 
-
-  constructor(public ngxSmartModalService: NgxSmartModalService) { }
+  constructor(public ngxSmartModalService: NgxSmartModalService) {
+  }
 
   ngOnInit(): void {
+    this.filteredData = this.data;
   }
 
   search(value: string): void {
     this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value));
   }
 
-  // used to build a slice of papers relevant at any given time
   public getPaginatorData(event: PageEvent): PageEvent {
     this.lowValue = event.pageIndex * event.pageSize;
     this.highValue = this.lowValue + event.pageSize;

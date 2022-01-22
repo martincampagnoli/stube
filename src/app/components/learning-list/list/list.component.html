@@ -1,15 +1,20 @@
 <mat-paginator
-    [length]="data?.length" 
+    [length]="filteredData?.length" 
     [pageSize]="pageSize"
     (page)="getPaginatorData($event)" 
     [pageSizeOptions]="pageSizeOptions">
 </mat-paginator>
 <mat-form-field>
-    <input matInput class="searchTerm" type="text" name="searchTerm" placeholder="Filter by name"
-        [(ngModel)]="searchTerm" (input)="search(searchTerm)" />
+    <input matInput 
+        class="searchTerm" 
+        type="text" 
+        name="searchTerm" 
+        placeholder="Filter by name"
+        [(ngModel)]="searchTerm" 
+        (input)="search(searchTerm)" />
 </mat-form-field>
 <div *ngIf="data">
-    <div *ngFor="let item of ((data | slice: lowValue : highValue) | searchFilter: searchTerm)">
+    <div *ngFor="let item of ((filteredData | slice: lowValue : highValue) | searchFilter: searchTerm)">
         <mat-card class="feed-card slow-feed">
             <mat-card-header>
                 <!--<div mat-card-avatar [ngStyle]="{'background-image': 'url(' + user?.avatar + ')'}" 
