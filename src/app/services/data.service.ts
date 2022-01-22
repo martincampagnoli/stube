@@ -12,6 +12,10 @@ export class DataService {
         return this.db.list('users').valueChanges();
     }
 
+    getLearnings(): any {
+        return this.db.list('learnings').valueChanges();
+    }
+
     deleteUser(data: any): void {
         const itemsRef = this.db.list('users');
         const key = data.id - 1;
