@@ -1,20 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireModule } from '@angular/fire/compat';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { LearningListComponent } from './components/learning-list/learning-list.component';
 import { MainComponent } from './components/main/main.component';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { FormsModule } from '@angular/forms';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { AngularFireModule } from '@angular/fire/compat';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 const mat = [
   MatCardModule,
-  MatIconModule
+  MatIconModule,
+  MatButtonModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatInputModule,
+  MatFormFieldModule
 ];
 
 const firebaseConfig = {
@@ -32,10 +46,12 @@ const firebaseConfig = {
     AppComponent,
     UserListComponent,
     LearningListComponent,
-    MainComponent
+    MainComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
