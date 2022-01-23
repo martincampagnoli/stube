@@ -23,4 +23,9 @@ export class LearningListComponent implements OnInit {
     this.dataService.getLearnings()
       .subscribe((r: Learning[]) =>  this.learnings = r); 
   }
+
+  delete(data: Learning) {
+    this.dataService.deleteLearning(data);
+  }
+
 }

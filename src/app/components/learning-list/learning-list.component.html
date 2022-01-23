@@ -12,3 +12,9 @@
     </mat-card-content>
 </mat-card>
 
+<ngx-smart-modal #removeLearning identifier="removeLearning">
+    <h1>Are you sure you want to remove this learning? {{removeLearning.getData()?.id}}</h1>
+    <button mat-button (click)="removeLearning.close()">Cancel</button>
+    <button mat-button color="warn" (click)="delete(removeLearning.getData()); removeLearning.close()">Remove</button>
+</ngx-smart-modal>
+
