@@ -17,9 +17,9 @@
     <div *ngFor="let item of ((filteredData | slice: lowValue : highValue) | searchFilter: searchTerm)">
         <mat-card class="feed-card slow-feed">
             <mat-card-header>
-                <!--<div mat-card-avatar [ngStyle]="{'background-image': 'url(' + user?.avatar + ')'}" 
-                    class="feed-header-image"></div>-->
-                <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/empty.png)'}"
+                <div mat-card-avatar *ngIf="item?.avatar" [ngStyle]="{'background-image': 'url(' + item?.avatar + ')'}" 
+                    class="feed-header-image"></div>
+                <div mat-card-avatar *ngIf="!item?.avatar" [ngStyle]="{'background-image': 'url(../assets/empty.png)'}"
                     class="feed-header-image"></div>
                 <mat-card-title class="title">{{ item?.name}}</mat-card-title>
                 <mat-card-subtitle>{{ item?.email}}</mat-card-subtitle>
