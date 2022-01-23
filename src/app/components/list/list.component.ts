@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-
+import { Type } from 'src/app/Enums/type';
 @Component({
   selector: 'list',
   templateUrl: './list.component.html',
@@ -10,7 +10,11 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 export class ListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static : false} ) paginator!: MatPaginator;
+
   @Input() data: any;
+  @Input() type!: Type;
+  TypeEnum = Type;
+
   filteredData!: Array<any>;
 
   lowValue: number = 0;
@@ -43,8 +47,15 @@ export class ListComponent implements OnInit {
   openModal(name: string, data?: any): void {
     this.ngxSmartModalService.getModal(name).open();
     if (data) { 
-      this.ngxSmartModalService.setModalData(data, name);
+      this.ngxSmartModalService.setModalData(data, name, true);
     }
+  }
+
+  getAvatar(item: any): string {
+    if (item.avatar) {
+      return item.avatar;
+    }
+    return '../assets/empty.png';
   }
 
 }
