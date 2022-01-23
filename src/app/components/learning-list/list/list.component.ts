@@ -26,6 +26,10 @@ export class ListComponent implements OnInit {
     this.filteredData = this.data;
   }
 
+  ngOnChanges(): void {
+    this.filteredData = this.data;
+  }
+
   search(value: string): void {
     this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value));
   }
