@@ -13,19 +13,30 @@
         [(ngModel)]="searchTerm" 
         (input)="search(searchTerm)" />
 </mat-form-field>
+<button mat-button (click)="openModal('create', type)" >
+    <mat-icon>add</mat-icon> 
+    <span>Create new {{ type === TypeEnum.users ? 'User' : 'Learning' }}</span>
+</button>
 <div *ngIf="data">
     <div *ngFor="let item of ((filteredData | slice: lowValue : highValue) | searchFilter: searchTerm)">
         <mat-card class="feed-card slow-feed">
-            <mat-card-header>
-                <div mat-card-avatar *ngIf="item?.avatar" [ngStyle]="{'background-image': 'url(' + item?.avatar + ')'}" 
-                    class="feed-header-image"></div>
-                <div mat-card-avatar *ngIf="!item?.avatar" [ngStyle]="{'background-image': 'url(../assets/empty.png)'}"
-                    class="feed-header-image"></div>
-                <mat-card-title class="title">{{ item?.name}}</mat-card-title>
-                <mat-card-subtitle>{{ item?.email}}</mat-card-subtitle>
-                <mat-card-subtitle>{{ item?.avatar}}</mat-card-subtitle>
+            <mat-card-header 
+                *ngIf="type === TypeEnum.users; else learnings">
+                <div mat-card-avatar 
+                    *ngIf="item?.avatar" 
+                    [ngStyle]="{'background-image': 'url(' + getAvatar(item) + ')'}" 
+                    class="feed-header-image">
+                </div>
+                    <mat-card-title class="title">{{ item?.name}}</mat-card-title>
+                    <mat-card-subtitle>{{ item?.email}}</mat-card-subtitle>
             </mat-card-header>
-            <mat-card-actions class="action-buttons">
+            <ng-template #learnings>
+                <mat-card-header>
+                    <mat-card-title class="title">{{ item?.name}}</mat-card-title>
+                    <mat-card-subtitle>{{ item?.active ? 'ACTIVE' : 'ARCHIVED'}}</mat-card-subtitle>
+                </mat-card-header>
+            </ng-template>
+            <mat-card-actions class="action-buttons" *ngIf="type === TypeEnum.users; else learningActions">
                 <button mat-button color="primary"
                     (click)="openModal('displayLearnings', '')">
                     <mat-icon>school</mat-icon> 
@@ -36,6 +47,25 @@
                     <span>Remove from List</span>
                 </button>
             </mat-card-actions>
+            <ng-template #learningActions>
+                <mat-card-actions class="action-buttons">
+                    <button mat-button (click)="openModal('removeLearning', item)" color="warn">
+                        <mat-icon>clear</mat-icon> 
+                        <span>Remove from List {{item?.id}}</span>
+                    </button>
+                    <button mat-button color="primary"
+                        (click)="openModal('assignUsers', '')">
+                        <mat-icon>school</mat-icon> 
+                        <span>Assign to users</span>
+                    </button>
+                    <mat-slide-toggle [(ngModel)]="item.active">Active</mat-slide-toggle>
+                </mat-card-actions>
+            </ng-template>
         </mat-card>
     </div>
 </div>
+
+<ngx-smart-modal #create identifier="create">
+    <create-user-form *ngIf="create.getData() !== TypeEnum.learnings"></create-user-form>
+    <create-learning-form *ngIf="create.getData() === TypeEnum.learnings"></create-learning-form>
+</ngx-smart-modal>
