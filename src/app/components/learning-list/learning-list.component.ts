@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { Type } from 'src/app/Enums/type';
 import { DataService } from 'src/app/services/data.service';
 export interface Learning {
   name: string, 
@@ -12,6 +13,8 @@ export interface Learning {
 })
 export class LearningListComponent implements OnInit {
   learnings: Array<Learning> | undefined;
+
+  TypeEnum = Type;
 
   constructor(private dataService: DataService, public ngxSmartModalService: NgxSmartModalService) {
   }

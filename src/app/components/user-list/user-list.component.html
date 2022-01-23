@@ -1,5 +1,7 @@
 <div *ngIf="users">
-    <list [data]="users"></list>
+    <list [data]="users"
+        [type]="TypeEnum.users">
+    </list>
 </div>
 
 <mat-card class="feed-card slow-feed" *ngIf="!users">

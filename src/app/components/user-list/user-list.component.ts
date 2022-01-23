@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { Type } from 'src/app/Enums/type';
 
 export interface User {
   avatar: string, 
@@ -15,6 +16,8 @@ export interface User {
 })
 export class UserListComponent implements OnInit {
   users: Array<User> | undefined;
+
+  TypeEnum = Type;
 
   constructor(private dataService: DataService, public ngxSmartModalService: NgxSmartModalService) {
   }
