@@ -22,7 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
-import { ListComponent } from './components/learning-list/list/list.component';
+import { ListComponent } from './components/list/list.component';
 
 const mat = [
   MatCardModule,
