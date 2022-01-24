@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Learning } from 'src/app/models/learning';
+import { User } from 'src/app/models/user';
 import { DataService } from 'src/app/services/data.service';
-import { Learning } from '../learning-list/learning-list.component';
-import { User } from '../user-list/user-list.component';
 
 @Component({
   selector: 'display-learnings',
@@ -22,8 +22,6 @@ export class DisplayLearningsComponent implements OnInit {
     .subscribe((r: Learning[]) =>  {
       this.learnings = r;
       this.filteredData = this.learnings.filter((e) => this.user.learnings?.includes(e.id));
-      console.dir(this.user.learnings);
-      console.dir(this.filteredData);
     }); 
   }
 }

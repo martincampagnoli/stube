@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Type } from 'src/app/enums/type';
+import { Learning } from 'src/app/models/learning';
+import { User } from 'src/app/models/user';
 import { DataService } from 'src/app/services/data.service';
-import { User } from '../user-list/user-list.component';
-export interface Learning {
-  id: number,
-  name: string, 
-  archive: boolean,
-}
+
 @Component({
   selector: 'app-learning-list',
   templateUrl: './learning-list.component.html',

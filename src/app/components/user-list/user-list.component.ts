@@ -2,14 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Type } from 'src/app/enums/type';
-import { Learning } from '../learning-list/learning-list.component';
-
-export interface User {
-  avatar: string, 
-  name: string, 
-  email: string,
-  learnings?: Array<number>;
-}
+import { Learning } from 'src/app/models/learning';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-user-list',
