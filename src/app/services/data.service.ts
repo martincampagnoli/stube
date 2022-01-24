@@ -27,5 +27,11 @@ export class DataService {
         const key = data.id - 1;
         itemsRef.remove(key.toString());
     }
+
+    updateLearning(data: any): void {
+        const itemsRef = this.db.list('learnings');
+        const key = data.id - 1;
+        itemsRef.set(key.toString(), data);
+    }
     
 }

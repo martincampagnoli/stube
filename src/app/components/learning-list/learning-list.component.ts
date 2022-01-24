@@ -28,4 +28,8 @@ export class LearningListComponent implements OnInit {
     this.dataService.deleteLearning(data);
   }
 
+  toggleActive(item: any){
+    this.dataService.updateLearning(item);
+  }
+
 }

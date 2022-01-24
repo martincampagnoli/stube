@@ -1,6 +1,7 @@
 <div *ngIf="learnings">
     <list [data]="learnings"
-    [type]="TypeEnum.learnings">
+    [type]="TypeEnum.learnings"
+    (updateItemEvent)="toggleActive($event)">
     </list>
 </div>
 
