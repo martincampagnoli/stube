@@ -15,7 +15,9 @@
 </mat-form-field>
 <button mat-button (click)="openModal('create', type)" >
     <mat-icon>add</mat-icon> 
-    <span>Create new {{ type === TypeEnum.users ? 'User' : 'Learning' }}</span>
+    <span>
+        Create new {{ type === TypeEnum.users ? 'User' : 'Learning' }}
+    </span>
 </button>
 <div *ngIf="data">
     <div *ngFor="let item of ((filteredData | slice: lowValue : highValue) | searchFilter: searchTerm)">
@@ -27,38 +29,56 @@
                     [ngStyle]="{'background-image': 'url(' + getAvatar(item) + ')'}" 
                     class="feed-header-image">
                 </div>
-                    <mat-card-title class="title">{{ item?.name}}</mat-card-title>
-                    <mat-card-subtitle>{{ item?.email}}</mat-card-subtitle>
+                    <mat-card-title class="title">
+                        {{ item?.name}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{ item?.email}}
+                    </mat-card-subtitle>
             </mat-card-header>
             <ng-template #learnings>
                 <mat-card-header>
-                    <mat-card-title class="title">{{ item?.name}}</mat-card-title>
-                    <mat-card-subtitle>{{ item?.active ? 'ACTIVE' : 'ARCHIVED'}}</mat-card-subtitle>
+                    <mat-card-title class="title">
+                        {{ item?.name}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        {{ item?.active ? 'ACTIVE' : 'ARCHIVED'}}
+                    </mat-card-subtitle>
                 </mat-card-header>
             </ng-template>
-            <mat-card-actions class="action-buttons" *ngIf="type === TypeEnum.users; else learningActions">
+            <mat-card-actions class="action-buttons" 
+                *ngIf="type === TypeEnum.users; else learningActions">
                 <button mat-button color="primary"
                     (click)="openModal('displayLearnings', '')">
                     <mat-icon>school</mat-icon> 
                     <span> Show Learnings</span>
                 </button>
-                <button mat-button (click)="openModal('removeUser', item)" color="warn">
+                <button mat-button 
+                    (click)="openModal('removeUser', item)" 
+                    color="warn">
                     <mat-icon>clear</mat-icon> 
                     <span>Remove from List</span>
                 </button>
             </mat-card-actions>
             <ng-template #learningActions>
                 <mat-card-actions class="action-buttons">
-                    <button mat-button (click)="openModal('removeLearning', item)" color="warn">
+                    <button mat-button 
+                        (click)="openModal('removeLearning', item)" 
+                        color="warn">
                         <mat-icon>clear</mat-icon> 
-                        <span>Remove from List {{item?.id}}</span>
+                        <span>
+                            Remove from List
+                        </span>
                     </button>
                     <button mat-button color="primary"
                         (click)="openModal('assignUsers', '')">
                         <mat-icon>school</mat-icon> 
                         <span>Assign to users</span>
                     </button>
-                    <mat-slide-toggle [(ngModel)]="item.active">Active</mat-slide-toggle>
+                    <mat-slide-toggle [(ngModel)]="item.active"
+                        (change)="updateItem(item)">
+                        Active
+                    </mat-slide-toggle>
                 </mat-card-actions>
             </ng-template>
         </mat-card>

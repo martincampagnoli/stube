@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Type } from 'src/app/Enums/type';
@@ -10,6 +10,8 @@ import { Type } from 'src/app/Enums/type';
 export class ListComponent implements OnInit {
 
   @ViewChild(MatPaginator, { static : false} ) paginator!: MatPaginator;
+
+  @Output() updateItemEvent = new EventEmitter<any>();
 
   @Input() data: any;
   @Input() type!: Type;
@@ -38,7 +40,7 @@ export class ListComponent implements OnInit {
     this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value));
   }
 
-  public getPaginatorData(event: PageEvent): PageEvent {
+  getPaginatorData(event: PageEvent): PageEvent {
     this.lowValue = event.pageIndex * event.pageSize;
     this.highValue = this.lowValue + event.pageSize;
     return event;
@@ -56,6 +58,10 @@ export class ListComponent implements OnInit {
       return item.avatar;
     }
     return '../assets/empty.png';
+  }
+
+  updateItem(item: any) {
+    this.updateItemEvent.emit(item);
   }
 
 }
