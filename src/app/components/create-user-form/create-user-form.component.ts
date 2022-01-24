@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'create-user-form',
@@ -7,9 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateUserFormComponent implements OnInit {
 
-  constructor() { }
+  @Output() closeModalEvent = new EventEmitter<any>();
+  
+  userFrom: any;
+
+  constructor(private fb: FormBuilder, private dataService: DataService) {
+    this.userFrom = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  closeModal(): void {
+    this.closeModalEvent.emit();
+  }
+
+  createUser(): void {
+    this.dataService.createUser(this.userFrom.value);
+    this.closeModal();
   }
 
 }

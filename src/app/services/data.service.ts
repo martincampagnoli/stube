@@ -17,6 +17,16 @@ export class DataService {
         return this.db.list('learnings').valueChanges();
     }
 
+    createUser(data: any) {
+        const itemsRef = this.db.list('users');
+        itemsRef.push(data);
+    }
+
+    createLearning(data: any) {
+        const itemsRef = this.db.list('learnings');
+        itemsRef.push(data);
+    }
+
     deleteUser(data: any): void {
         const itemsRef = this.db.list('users');
         const key = data.id - 1;
