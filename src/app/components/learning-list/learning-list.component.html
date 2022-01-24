@@ -14,8 +14,24 @@
 </mat-card>
 
 <ngx-smart-modal #removeLearning identifier="removeLearning">
-    <h1>Are you sure you want to remove this learning? {{removeLearning.getData()?.id}}</h1>
+    <h1>Are you sure you want to remove this learning?</h1>
     <button mat-button (click)="removeLearning.close()">Cancel</button>
     <button mat-button color="warn" (click)="delete(removeLearning.getData()); removeLearning.close()">Remove</button>
 </ngx-smart-modal>
 
+<ngx-smart-modal #assignUsers identifier="assignUsers">
+    <h1>Assign learning to user</h1>
+    <br>
+    <mat-form-field>
+        <mat-label>Select user</mat-label>
+        <mat-select [(ngModel)]="selectedUser">
+            <mat-option *ngFor="let user of users" 
+                [value]="user">
+                {{user.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br><br>
+    <button mat-button (click)="assignUsers.close()">Cancel</button>
+    <button mat-button color="primary" [disabled]="!selectedUser" (click)="assignToUser(assignUsers.getData(), selectedUser); assignUsers.close()">Assign</button>
+</ngx-smart-modal>

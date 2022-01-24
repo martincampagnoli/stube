@@ -49,15 +49,20 @@
             <mat-card-actions class="action-buttons" 
                 *ngIf="type === TypeEnum.users; else learningActions">
                 <button mat-button color="primary"
+                    *ngIf="item?.learnings?.length > 0"
                     (click)="openModal('displayLearnings', '')">
                     <mat-icon>school</mat-icon> 
-                    <span> Show Learnings</span>
+                    <span> 
+                        Show Learnings
+                    </span>
                 </button>
                 <button mat-button 
                     (click)="openModal('removeUser', item)" 
                     color="warn">
                     <mat-icon>clear</mat-icon> 
-                    <span>Remove from List</span>
+                    <span>
+                        Remove from List
+                    </span>
                 </button>
             </mat-card-actions>
             <ng-template #learningActions>
@@ -71,9 +76,11 @@
                         </span>
                     </button>
                     <button mat-button color="primary"
-                        (click)="openModal('assignUsers', '')">
+                        (click)="openModal('assignUsers', item)">
                         <mat-icon>school</mat-icon> 
-                        <span>Assign to users</span>
+                        <span> 
+                            Assign to User
+                        </span>
                     </button>
                     <mat-slide-toggle [(ngModel)]="item.active"
                         (change)="updateItem(item)">

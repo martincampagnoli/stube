@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
@@ -36,7 +37,8 @@ const mat = [
   MatInputModule,
   MatFormFieldModule,
   MatDialogModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSelectModule
 ];
 
 const firebaseConfig = {

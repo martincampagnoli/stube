@@ -33,5 +33,18 @@ export class DataService {
         const key = data.id - 1;
         itemsRef.set(key.toString(), data);
     }
+
+    assignToUser(id: number, data: any){
+        const itemsRef = this.db.list('users');
+        const key = data.id - 1;
+        if (!data.learnings) {
+            data.learnings = [];
+            data.learnings.push(id);
+        } 
+        else {
+            data.learnings.push(id);
+        }
+        itemsRef.set(key.toString(), data);
+    }
     
 }

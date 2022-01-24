@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Type } from 'src/app/Enums/type';
 import { DataService } from 'src/app/services/data.service';
+import { User } from '../user-list/user-list.component';
 export interface Learning {
+  id: number,
   name: string, 
   archive: boolean,
 }
@@ -13,6 +15,9 @@ export interface Learning {
 })
 export class LearningListComponent implements OnInit {
   learnings: Array<Learning> | undefined;
+  users: Array<User> | undefined;
+
+  selectedUser!: User;
 
   TypeEnum = Type;
 
@@ -20,8 +25,18 @@ export class LearningListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getLearnings();
+    this.getUsers();
+  }
+
+  getLearnings(): void {
     this.dataService.getLearnings()
       .subscribe((r: Learning[]) =>  this.learnings = r); 
+  }
+
+  getUsers(): void {
+    this.dataService.getUsers()
+      .subscribe((r: User[]) =>  this.users = r); 
   }
 
   delete(data: Learning) {
@@ -30,6 +45,10 @@ export class LearningListComponent implements OnInit {
 
   toggleActive(item: any){
     this.dataService.updateLearning(item);
+  }
+
+  assignToUser(learning: Learning, user: User): void {
+    this.dataService.assignToUser(learning?.id, user);
   }
 
 }
