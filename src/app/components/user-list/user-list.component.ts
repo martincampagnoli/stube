@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { Type } from 'src/app/Enums/type';
+import { Type } from 'src/app/enums/type';
 import { Learning } from '../learning-list/learning-list.component';
 
 export interface User {
