@@ -20,6 +20,10 @@
 </ngx-smart-modal>
 
 <ngx-smart-modal #displayLearnings identifier="displayLearnings">
-    <h1>Learnings assigned to this user:</h1>
+    <display-learnings 
+        *ngIf="displayLearnings.visible"
+        [learnings]="learnings"
+        [user]="displayLearnings.getData()">
+    </display-learnings>
 </ngx-smart-modal>
 

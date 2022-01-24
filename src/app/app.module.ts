@@ -27,6 +27,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { ListComponent } from './components/list/list.component';
 import { CreateUserFormComponent } from './components/create-user-form/create-user-form.component';
 import { CreateLearningFormComponent } from './components/create-learning-form/create-learning-form.component';
+import { DisplayLearningsComponent } from './components/display-learnings/display-learnings.component';
 
 const mat = [
   MatCardModule,
@@ -60,7 +61,8 @@ const firebaseConfig = {
     SearchFilterPipe,
     ListComponent,
     CreateUserFormComponent,
-    CreateLearningFormComponent
+    CreateLearningFormComponent,
+    DisplayLearningsComponent
   ],
   imports: [
     BrowserModule,
