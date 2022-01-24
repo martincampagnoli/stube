@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Learning } from 'src/app/models/learning';
-import { User } from 'src/app/models/user';
+import { Learning } from 'src/app/models/Learning';
+import { User } from 'src/app/models/User';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({

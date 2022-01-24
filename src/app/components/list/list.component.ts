@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { Type } from 'src/app/enums/type';
+import { Type } from 'src/app/enums/Type';
 @Component({
   selector: 'list',
   templateUrl: './list.component.html',

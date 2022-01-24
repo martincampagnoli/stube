@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { Type } from 'src/app/enums/type';
-import { Learning } from 'src/app/models/learning';
-import { User } from 'src/app/models/user';
+import { Type } from 'src/app/enums/Type';
+import { Learning } from 'src/app/models/Learning';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-user-list',
