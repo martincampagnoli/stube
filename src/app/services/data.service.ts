@@ -1,5 +1,7 @@
+import { Learning } from 'src/app/models/Learning';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { first } from 'rxjs';
 import { User } from '../models/User';
 
 @Injectable({
@@ -18,18 +20,26 @@ export class DataService {
     }
 
     createUser(data: any) {
-        const itemsRef = this.db.list('users');
-        itemsRef.push(data);
+        this.getUsers().pipe(first()).subscribe((r: User[]) => {
+            const index = r[r.length-1].id;
+            const newId = parseInt(index) + 1;
+            const newItem = this.db.object(`/users/${index}`);
+            newItem.set({...data, id: newId.toString()});
+        });
     }
 
     createLearning(data: any) {
-        const itemsRef = this.db.list('learnings');
-        itemsRef.push(data);
+        this.getLearnings().pipe(first()).subscribe((r: Learning[]) => {
+            const index = r[r.length-1].id;
+            const newId = parseInt(index) + 1;
+            const newItem = this.db.object(`/learnings/${index}`);
+            newItem.set({...data, id: newId.toString()});
+        });
     }
 
     deleteUser(data: any): void {
         const itemsRef = this.db.list('users');
-        const key = data.id - 1;
+        const key = parseInt(data.id) - 1;
         itemsRef.remove(key.toString());
     }
 
@@ -41,7 +51,6 @@ export class DataService {
     }
 
     removeLearningRef(id: number) {
-        const userRef = this.db.list('users');
         this.getUsers().subscribe((r: User[]) => {
             r.forEach(elem => {
                 if (elem.learnings?.includes(id)) {
@@ -64,16 +73,13 @@ export class DataService {
         itemsRef.set(key.toString(), data);
     }
 
-    assignToUser(id: number, data: any){
+    assignToUser(id: string, data: any){
         const itemsRef = this.db.list('users');
-        const key = data.id - 1;
+        const key = parseInt(data.id) - 1;
         if (!data.learnings) {
             data.learnings = [];
-            data.learnings.push(id);
         } 
-        else {
-            data.learnings.push(id);
-        }
+        data.learnings.push(id);
         itemsRef.set(key.toString(), data);
     }
     

@@ -21,7 +21,7 @@ export class DisplayLearningsComponent implements OnInit {
     this.dataService.getLearnings()
     .subscribe((r: Learning[]) =>  {
       this.learnings = r;
-      this.filteredData = this.learnings.filter((e) => this.user.learnings?.includes(e.id));
+      this.filteredData = this.learnings.filter((e) => this.user.learnings?.includes(parseInt(e.id)));
     }); 
   }
 }
