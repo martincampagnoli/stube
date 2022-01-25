@@ -28,6 +28,8 @@ import { ListComponent } from './components/list/list.component';
 import { CreateUserFormComponent } from './components/create-user-form/create-user-form.component';
 import { CreateLearningFormComponent } from './components/create-learning-form/create-learning-form.component';
 import { DisplayLearningsComponent } from './components/display-learnings/display-learnings.component';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 const mat = [
   MatCardModule,
@@ -39,7 +41,8 @@ const mat = [
   MatFormFieldModule,
   MatDialogModule,
   MatSlideToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatChipsModule
 ];
 
 const firebaseConfig = {
