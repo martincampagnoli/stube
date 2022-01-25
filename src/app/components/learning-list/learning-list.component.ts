@@ -23,7 +23,7 @@ export class LearningListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLearnings();
-    this.getUsers();
+    //this.getUsers();
   }
 
   getLearnings(): void {
