@@ -22,7 +22,7 @@ export class LearningListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getLearnings();
+    this.getLearnings();
     //this.getUsers();
   }
 
