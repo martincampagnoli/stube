@@ -1,5 +1,5 @@
 export interface Learning {
-    id: number,
+    id: string,
     name: string, 
     archive: boolean,
   }
