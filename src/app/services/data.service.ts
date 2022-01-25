@@ -45,12 +45,12 @@ export class DataService {
 
     deleteLearning(data: any): void {
         const itemsRef = this.db.list('learnings');
-        const key = data.id - 1;
+        const key = parseInt(data.id) - 1;
         itemsRef.remove(key.toString());
         this.removeLearningRef(data.id);
     }
 
-    removeLearningRef(id: number) {
+    removeLearningRef(id: string) {
         this.getUsers().subscribe((r: User[]) => {
             r.forEach(elem => {
                 if (elem.learnings?.includes(id)) {
@@ -63,13 +63,13 @@ export class DataService {
 
     updateLearning(data: any): void {
         const itemsRef = this.db.list('learnings');
-        const key = data.id - 1;
+        const key = parseInt(data.id) - 1;
         itemsRef.set(key.toString(), data);
     }
 
     updateUser(data: any){
         const itemsRef = this.db.list('users');
-        const key = data.id - 1;
+        const key = parseInt(data.id) - 1;
         itemsRef.set(key.toString(), data);
     }
 

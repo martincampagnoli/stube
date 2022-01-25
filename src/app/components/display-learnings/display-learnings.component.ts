@@ -19,9 +19,9 @@ export class DisplayLearningsComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getLearnings()
-    .subscribe((r: Learning[]) =>  {
-      this.learnings = r;
-      this.filteredData = this.learnings.filter((e) => this.user.learnings?.includes(parseInt(e.id)));
-    }); 
+      .subscribe((r: Learning[]) =>  {
+        this.learnings = r;
+        this.filteredData = this.learnings.filter((e) => this.user.learnings?.includes(e.id));
+      }); 
   }
 }

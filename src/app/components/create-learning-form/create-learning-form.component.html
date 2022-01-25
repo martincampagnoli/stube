@@ -1,1 +1,14 @@
-<p>create-learning-form works!</p>
+<h1>Create new User</h1>
+<form [formGroup]="learningForm">
+    <mat-form-field style="width:75%">
+        <input matInput 
+            formControlName="name"
+            type="text"
+            placeholder="Name"
+            />
+    </mat-form-field>
+    <br>
+    <br>
+    <button mat-button (click)="closeModal()">Cancel</button>
+    <button mat-button color="primary" [disabled]="!learningForm.valid" (click)="createLearning()">Save</button>
+</form>

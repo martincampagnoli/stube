@@ -3,5 +3,5 @@ export interface User {
     avatar?: string, 
     name: string, 
     email: string,
-    learnings?: Array<number>;
+    learnings?: Array<string>;
   }
