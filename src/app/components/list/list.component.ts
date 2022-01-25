@@ -1,3 +1,4 @@
+import { User } from 'src/app/models/User';
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgxSmartModalService } from 'ngx-smart-modal';
@@ -29,15 +30,16 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filteredData = this.data.reverse();
+    this.filteredData = this.data;
   }
 
   ngOnChanges(): void {
-    this.filteredData = this.data.reverse();
+    this.filteredData = this.type === this.TypeEnum.users ? this.data.reverse(): this.data;
   }
 
   search(value: string): void {
-    this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value)).reverse();
+    this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value))
+    this.filteredData = this.type === this.TypeEnum.users ? this.filteredData.reverse(): this.filteredData;
     this.paginator.firstPage();
   }
 
