@@ -11,10 +11,10 @@ export class CreateUserFormComponent implements OnInit {
 
   @Output() closeModalEvent = new EventEmitter<any>();
   
-  userFrom: any;
+  userForm: any;
 
   constructor(private fb: FormBuilder, private dataService: DataService) {
-    this.userFrom = this.fb.group({
+    this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
@@ -28,7 +28,7 @@ export class CreateUserFormComponent implements OnInit {
   }
 
   createUser(): void {
-    this.dataService.createUser(this.userFrom.value);
+    this.dataService.createUser(this.userForm.value);
     this.closeModal();
   }
 
