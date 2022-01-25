@@ -38,6 +38,7 @@ export class ListComponent implements OnInit {
 
   search(value: string): void {
     this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value));
+    this.paginator.firstPage();
   }
 
   getPaginatorData(event: PageEvent): PageEvent {
