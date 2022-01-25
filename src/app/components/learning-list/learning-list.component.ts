@@ -23,7 +23,7 @@ export class LearningListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getLearnings();
-    //this.getUsers();
+    this.getUsers();
   }
 
   getLearnings(): void {
@@ -33,7 +33,7 @@ export class LearningListComponent implements OnInit {
 
   getUsers(): void {
     this.dataService.getUsers()
-      .subscribe((r: User[]) =>  this.users = r); 
+      .subscribe((r: User[]) =>  this.users = r.reverse()); 
   }
 
   delete(data: Learning) {

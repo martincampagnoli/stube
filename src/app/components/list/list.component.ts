@@ -29,15 +29,15 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filteredData = this.data;
+    this.filteredData = this.data.reverse();
   }
 
   ngOnChanges(): void {
-    this.filteredData = this.data;
+    this.filteredData = this.data.reverse();
   }
 
   search(value: string): void {
-    this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value));
+    this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value)).reverse();
     this.paginator.firstPage();
   }
 
