@@ -1,6 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+import { of } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 
 import { UserListComponent } from './user-list.component';
+
+const mockDataService = {
+  getUsers: () => of(false),
+};
+
+const mockNgxSmartModalService = {
+};
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -8,7 +18,11 @@ describe('UserListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserListComponent ]
+      declarations: [ UserListComponent ],
+      providers: [
+        { provide: DataService, useValue: mockDataService },
+        { provide: NgxSmartModalService, useValue: mockNgxSmartModalService},
+      ]
     })
     .compileComponents();
   });
