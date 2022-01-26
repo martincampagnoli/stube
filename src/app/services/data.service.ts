@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { first } from 'rxjs';
 import { User } from '../models/User';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
     providedIn: 'root'
 })
 export class DataService {
-    constructor(private db: AngularFireDatabase) {
+    constructor(private db: AngularFireDatabase, private matSnackBar: MatSnackBar) {
     }
 
     getUsers(): any {
@@ -25,6 +26,9 @@ export class DataService {
             const newId = parseInt(index) + 1;
             const newItem = this.db.object(`/users/${index}`);
             newItem.set({...data, id: newId.toString()});
+            this.matSnackBar.open("User created!", '', {
+                duration: 1000,
+            });
         });
     }
 
@@ -34,6 +38,9 @@ export class DataService {
             const newId = parseInt(index) + 1;
             const newItem = this.db.object(`/learnings/${index}`);
             newItem.set({...data, id: newId.toString()});
+            this.matSnackBar.open("Learning created!", '', {
+                duration: 1000,
+            });
         });
     }
 
@@ -41,6 +48,9 @@ export class DataService {
         const itemsRef = this.db.list('users');
         const key = parseInt(data.id) - 1;
         itemsRef.remove(key.toString());
+        this.matSnackBar.open("User deleted", '', {
+            duration: 1000,
+        });
     }
 
     deleteLearning(data: any): void {
@@ -48,6 +58,9 @@ export class DataService {
         const key = parseInt(data.id) - 1;
         itemsRef.remove(key.toString());
         this.removeLearningRef(data.id);
+        this.matSnackBar.open("Learning deleted", '', {
+            duration: 1000,
+        });
     }
 
     removeLearningRef(id: string) {
@@ -65,6 +78,9 @@ export class DataService {
         const itemsRef = this.db.list('learnings');
         const key = parseInt(data.id) - 1;
         itemsRef.set(key.toString(), data);
+        this.matSnackBar.open("Learning updated!", '', {
+            duration: 500,
+        });
     }
 
     updateUser(data: any){
@@ -81,6 +97,9 @@ export class DataService {
         } 
         data.learnings.push(id);
         itemsRef.set(key.toString(), data);
+        this.matSnackBar.open("Learning assigned to selected user", '', {
+            duration: 1000,
+        });
     }
     
 }

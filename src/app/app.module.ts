@@ -29,6 +29,7 @@ import { CreateUserFormComponent } from './components/create-user-form/create-us
 import { CreateLearningFormComponent } from './components/create-learning-form/create-learning-form.component';
 import { DisplayLearningsComponent } from './components/display-learnings/display-learnings.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 const mat = [
@@ -42,7 +43,8 @@ const mat = [
   MatDialogModule,
   MatSlideToggleModule,
   MatSelectModule,
-  MatChipsModule
+  MatChipsModule,
+  MatSnackBarModule
 ];
 
 const firebaseConfig = {
