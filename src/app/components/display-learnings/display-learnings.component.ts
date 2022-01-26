@@ -10,8 +10,8 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class DisplayLearningsComponent implements OnInit {
 
-  @Input() learnings!: Array<Learning>;
   @Input() user!: User;
+  learnings: Array<Learning> | undefined;
 
   filteredData: Array<Learning> | undefined;
 
