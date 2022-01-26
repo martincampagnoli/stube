@@ -32,5 +32,4 @@ export class CreateUserFormComponent implements OnInit {
     this.dataService.createUser(this.userForm.value);
     this.closeModal();
   }
-
 }

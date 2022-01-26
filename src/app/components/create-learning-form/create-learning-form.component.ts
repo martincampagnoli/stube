@@ -31,5 +31,4 @@ export class CreateLearningFormComponent implements OnInit {
     this.dataService.createLearning(newLearning);
     this.closeModal();
   }
-
 }

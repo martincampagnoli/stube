@@ -20,7 +20,7 @@ export class DataService {
         return this.db.list('learnings').valueChanges();
     }
 
-    createUser(data: any) {
+    createUser(data: any): void {
         this.getUsers().pipe(first()).subscribe((r: User[]) => {
             const index = r[r.length-1].id;
             const newId = parseInt(index) + 1;
@@ -32,7 +32,7 @@ export class DataService {
         });
     }
 
-    createLearning(data: any) {
+    createLearning(data: any): void {
         this.getLearnings().pipe(first()).subscribe((r: Learning[]) => {
             const index = r[r.length-1].id;
             const newId = parseInt(index) + 1;
@@ -63,7 +63,7 @@ export class DataService {
         });
     }
 
-    removeLearningRef(id: string) {
+    removeLearningRef(id: string): void {
         this.getUsers().subscribe((r: User[]) => {
             r.forEach(elem => {
                 if (elem.learnings?.includes(id)) {
@@ -83,13 +83,13 @@ export class DataService {
         });
     }
 
-    updateUser(data: any){
+    updateUser(data: any): void {
         const itemsRef = this.db.list('users');
         const key = parseInt(data.id) - 1;
         itemsRef.set(key.toString(), data);
     }
 
-    assignToUser(id: string, data: any){
+    assignToUser(id: string, data: any): void {
         const itemsRef = this.db.list('users');
         const key = parseInt(data.id) - 1;
         if (!data.learnings) {

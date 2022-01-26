@@ -9,7 +9,6 @@ const mockDataService = {
   createUser: () => false,
 };
 
-
 describe('CreateUserFormComponent', () => {
   let component: CreateUserFormComponent;
   let fixture: ComponentFixture<CreateUserFormComponent>;
