@@ -1,6 +1,6 @@
 <h1>Create new User</h1>
 <form [formGroup]="userForm">
-    <mat-form-field style="width:75%">
+    <mat-form-field class="input-field">
         <input matInput 
             formControlName="name"
             type="text"
@@ -8,11 +8,17 @@
             />
     </mat-form-field>
     <br>
-    <mat-form-field style="width:75%">
+    <mat-form-field class="input-field" >
         <input matInput 
             formControlName="email"
             type="text" 
             placeholder="Email" />
+    </mat-form-field>
+    <mat-form-field class="input-field">
+        <input matInput 
+            formControlName="avatar"
+            type="text" 
+            placeholder="Avatar URL" />
     </mat-form-field>
     <br>
     <button mat-button (click)="closeModal()">Cancel</button>
