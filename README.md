@@ -1,4 +1,17 @@
-# Stube
+# Stube task
+
+App created using [Angular](https://angular.io/) as frontend framework, [Firebase](https://firebase.google.com/) as backend as a service, and [Angular Material](https://material.angular.io/) for design and styling.
+
+Automatic build and deploy to production using [Heroku](http://www.heroku.com/)
+
+To run the app in production click [HERE](https://stube-task.herokuapp.com/)
+
+Users and Learnings are listed in dedicated pages<br/>
+It's possible to create new Users and Learnings by using the available forms and also remove them<br/>
+Learnings can be assigned to specific Users<br/>
+It's possible to see which learning is assigned to which user<br/>
+
+*Tested in Chrome on OSX, for both desktop and mobile (using devTools device mode).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
 
