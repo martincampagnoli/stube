@@ -34,7 +34,7 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.filteredData = this.type === this.TypeEnum.users ? this.data.reverse(): this.data;
+    this.filteredData = this.data.reverse();
   }
 
   search(value: string): void {
