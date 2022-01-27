@@ -39,7 +39,6 @@ export class ListComponent implements OnInit, OnChanges {
 
   search(value: string): void {
     this.filteredData = this.data?.filter((val:any) => val.name.toLowerCase().includes(value))
-    this.filteredData = this.type === this.TypeEnum.users ? this.filteredData.reverse(): this.filteredData;
     this.paginator.firstPage();
   }
 
