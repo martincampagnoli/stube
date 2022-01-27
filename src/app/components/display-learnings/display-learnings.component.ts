@@ -4,7 +4,7 @@ import { User } from 'src/app/models/User';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'display-learnings',
+  selector: 'app-display-learnings',
   templateUrl: './display-learnings.component.html',
   styleUrls: ['./display-learnings.component.scss']
 })

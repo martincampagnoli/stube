@@ -1,14 +1,14 @@
 import { User } from 'src/app/models/User';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Type } from 'src/app/enums/Type';
 @Component({
-  selector: 'list',
+  selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnChanges {
 
   @ViewChild(MatPaginator, { static : false} ) paginator!: MatPaginator;
 

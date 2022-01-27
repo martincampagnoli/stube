@@ -1,8 +1,8 @@
 <app-main></app-main>
 <div *ngIf="users">
-    <list [data]="users"
+    <app-list [data]="users"
         [type]="TypeEnum.users">
-    </list>
+    </app-list>
 </div>
 
 <mat-card class="feed-card slow-feed" *ngIf="!users">
@@ -20,9 +20,9 @@
 </ngx-smart-modal>
 
 <ngx-smart-modal #displayLearnings identifier="displayLearnings">
-    <display-learnings 
+    <app-display-learnings 
         *ngIf="displayLearnings.visible"
         [user]="displayLearnings.getData()">
-    </display-learnings>
+    </app-display-learnings>
 </ngx-smart-modal>
 

@@ -95,12 +95,12 @@
 </div>
 
 <ngx-smart-modal #create identifier="create">
-    <create-user-form 
+    <app-create-user-form 
         *ngIf="create.getData() !== TypeEnum.learnings" 
         (closeModalEvent)="create.close()">
-    </create-user-form>
-    <create-learning-form 
+    </app-create-user-form>
+    <app-create-learning-form 
         *ngIf="create.getData() === TypeEnum.learnings" 
         (closeModalEvent)="create.close()">
-    </create-learning-form>
+    </app-create-learning-form>
 </ngx-smart-modal>

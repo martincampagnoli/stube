@@ -6,7 +6,7 @@ import { User } from 'src/app/models/User';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'learning-list',
+  selector: 'app-learning-list',
   templateUrl: './learning-list.component.html',
   styleUrls: ['./learning-list.component.scss']
 })

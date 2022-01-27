@@ -3,11 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'create-learning-form',
+  selector: 'app-create-learning-form',
   templateUrl: './create-learning-form.component.html',
   styleUrls: ['./create-learning-form.component.scss']
 })
-export class CreateLearningFormComponent implements OnInit {
+export class CreateLearningFormComponent {
 
   @Output() closeModalEvent = new EventEmitter<any>();
   
@@ -17,9 +17,6 @@ export class CreateLearningFormComponent implements OnInit {
     this.learningForm = this.fb.group({
       name: ['', Validators.required]
     });
-  }
-
-  ngOnInit(): void {
   }
 
   closeModal(): void {

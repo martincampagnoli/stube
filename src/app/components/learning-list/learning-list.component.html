@@ -1,9 +1,9 @@
 <app-main></app-main>
 <div *ngIf="learnings">
-    <list [data]="learnings"
+    <app-list [data]="learnings"
     [type]="TypeEnum.learnings"
     (updateItemEvent)="toggleActive($event)">
-    </list>
+    </app-list>
 </div>
 
 <mat-card class="feed-card slow-feed" *ngIf="!learnings">

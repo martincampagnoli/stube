@@ -3,11 +3,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'create-user-form',
+  selector: 'app-create-user-form',
   templateUrl: './create-user-form.component.html',
   styleUrls: ['./create-user-form.component.scss']
 })
-export class CreateUserFormComponent implements OnInit {
+export class CreateUserFormComponent {
 
   @Output() closeModalEvent = new EventEmitter<any>();
   
@@ -19,9 +19,6 @@ export class CreateUserFormComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       avatar: [''],
     });
-  }
-
-  ngOnInit(): void {
   }
 
   closeModal(): void {
