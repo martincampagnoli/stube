@@ -5,7 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import { DisplayLearningsComponent } from './display-learnings.component';
 
 const mockDataService = {
-  getLearnings: () => of(false),
+  getLearnings: () => of([ {name: "testLearning", id: "2"}]),
 };
 
 describe('DisplayLearningsComponent', () => {
@@ -25,10 +25,19 @@ describe('DisplayLearningsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DisplayLearningsComponent);
     component = fixture.componentInstance;
+    component.user = {id: "1", name: "test user", email: "test@test.com", learnings: ['2']};
+    component.filteredData = [];
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load filteredData if the learning is assigned to the user', () => {
+    spyOn(mockDataService, 'getLearnings').and.callThrough();
+    expect(component.filteredData).toBeDefined();
+    expect(component.filteredData?.length).not.toBe(0);
+  });
+
 });

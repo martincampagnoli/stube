@@ -32,4 +32,18 @@ describe('ListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should get the avatar in user', () => {
+    const item = {avatar: "www.avatar.com"}
+    const result = component.getAvatar(item);
+    expect(result).toBeDefined();
+    expect(result).toEqual("www.avatar.com");
+  });
+
+  it('should get default avatar if it is not set', () => {
+    const item = {avatar: ''}
+    const result = component.getAvatar(item);
+    expect(result).toBeDefined();
+    expect(result).toEqual("../assets/empty.png");
+  });
 });

@@ -5,7 +5,7 @@ import { DataService } from 'src/app/services/data.service';
 import { CreateLearningFormComponent } from './create-learning-form.component';
 
 const mockDataService = {
-  createLearning: () => false,
+  createLearning: (value: any) => false,
 };
 
 describe('CreateLearningFormComponent', () => {
@@ -31,5 +31,20 @@ describe('CreateLearningFormComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create learning with the value from the form', () => {
+    component.learningForm.value = { name: "test name", active: true };
+    spyOn(mockDataService, 'createLearning');
+    component.createLearning();
+    expect(mockDataService.createLearning).toHaveBeenCalled();
+    expect(mockDataService.createLearning).toHaveBeenCalledWith(component.learningForm.value);
+  });
+  
+  it('should close modal after submitting form', () => {
+    component.learningForm.value = { name: "test name", active: true };
+    spyOn(component, 'closeModal');
+    component.createLearning();
+    expect(component.closeModal).toHaveBeenCalled();
   });
 });

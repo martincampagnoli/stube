@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { CreateUserFormComponent } from './create-user-form.component';
 
 const mockDataService = {
-  createUser: () => false,
+  createUser: (value: any) => false,
 };
 
 describe('CreateUserFormComponent', () => {
@@ -33,5 +33,20 @@ describe('CreateUserFormComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should create user with the value from the form', () => {
+    component.userForm.value = { name: "test name", active: true };
+    spyOn(mockDataService, 'createUser');
+    component.createUser();
+    expect(mockDataService.createUser).toHaveBeenCalled();
+    expect(mockDataService.createUser).toHaveBeenCalledWith(component.userForm.value);
+  });
+  
+  it('should close modal after submitting form', () => {
+    component.userForm.value = { name: "test name", active: true };
+    spyOn(component, 'closeModal');
+    component.createUser();
+    expect(component.closeModal).toHaveBeenCalled();
   });
 });
